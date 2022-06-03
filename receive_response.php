@@ -12,7 +12,7 @@ if($res_code==0)
  $amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
  $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
  $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
- $message = "Confirmed payment of $amount to Julia Tech Solutions. Receipt number is $MpesaReceiptNumber";
+ $message = "Santi budaa";
  $sms->send($PhoneNumber,$message);
 }
 elseif($res_code==1032) { 
