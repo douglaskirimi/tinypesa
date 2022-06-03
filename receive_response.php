@@ -30,11 +30,11 @@ if($res_code==0)
 //      exit();
 //  }
 }
-elseif($res_code != 0) { 
+elseif($res_code==1032) { 
 	$amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
     $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
     $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
-    $message = "FAILED! Payment of Ksh. $amount to JTS was unsuccessful. Try again later!";
+    $message = "FAILED! You cancelled the payment of Ksh. $amount to JTS. Try again later!";
  $sms->send($PhoneNumber,$message);
   }
 }
