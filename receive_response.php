@@ -30,7 +30,7 @@ if($res_code==0)
 //      exit();
 //  }
 }
-elseif ($res_code != 0) { 
+elseif($res_code != 0) { 
 	$amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
     $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
     $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
