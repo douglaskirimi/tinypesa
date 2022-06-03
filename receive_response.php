@@ -7,19 +7,19 @@ if($json!=null)
 {
 $data = json_decode($json);
 $res_code = $data->Body->stkCallback->ResultCode;
-if($res_code==0)
+if($res_code!=0)
 {
  $amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
  $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
  $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
- $message = "Santi budaa";
+ $message = "FAILED! You cancelled the payment of Ksh. $amount to JTS. Try again later!";
  $sms->send($PhoneNumber,$message);
 }
-elseif($res_code==1032) { 
+else{ 
 	$amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
     $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
     $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
-    $message = "FAILED! You cancelled the payment of Ksh. $amount to JTS. Try again later!";
+    $message = "TRANSACTION SUCCESSFUL! Confirmed payment of Ksh. $amount to JTS completed successfully. Receipt number is $MpesaReceiptNumber";
     $sms->send($PhoneNumber,$message);
   }
 }
