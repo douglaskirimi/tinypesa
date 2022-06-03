@@ -30,14 +30,13 @@ if($res_code==0)
 //      exit();
 //  }
 }
-else{
+elseif ($res_code != 0) { 
 	$amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
     $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
     $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
-    $message = "FAILED! Payment of Ksh. $amount to Douglas failed.Kindly try agin later.";
-    $sms->send($PhoneNumber,$message);
-
-}
+    $message = "FAILED! Payment of Ksh. $amount to JTS was unsuccessful. Try again later!";
+ $sms->send($PhoneNumber,$message);
+  }
 }
 
 ?> 
