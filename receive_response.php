@@ -29,6 +29,15 @@ if($res_code==0)
 //      header("Location: index.php?fdb=error");
 //      exit();
 //  }
-}}
+}
+else{
+	$amount = $data->Body->stkCallback->CallbackMetadata->Item[0]->Value;
+    $MpesaReceiptNumber = $data->Body->stkCallback->CallbackMetadata->Item[1]->Value;
+    $PhoneNumber = $data->Body->stkCallback->CallbackMetadata->Item[4]->Value;
+    $message = "FAILED! Payment of Ksh. $amount to Douglas failed.Kindly try agin later.";
+    $sms->send($PhoneNumber,$message);
+
+}
+}
 
 ?> 
