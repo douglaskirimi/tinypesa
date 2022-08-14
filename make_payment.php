@@ -42,7 +42,7 @@ $json=json_decode($resp);
 
 $_SESSION['init']=$json->success;
 $_SESSION['phone']=$phone;
-header("location:index.php");
+header("location: receive_response.php");
 }}
 ?>
 
